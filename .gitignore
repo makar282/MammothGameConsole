@@ -1,0 +1,24 @@
+# Игнорировать папки bin и obj
+[Mm]ammoth/[Bb]in/
+[Mm]ammoth/[Oo]bj/
+
+# Игнорировать папку .vscode (настройки Visual Studio Code)
+.vscode/
+
+# Игнорировать файл .editorconfig (если он не нужен в репозитории)
+.editorconfig
+
+# Игнорировать файл highscores.json (если он генерируется автоматически)
+highscores.json
+
+# Игнорировать пользовательские файлы (если есть)
+*.user
+*.suo
+*.userprefs
+
+# Игнорировать временные файлы
+*.tmp
+*.temp
+
+# Игнорировать логи
+*.log
