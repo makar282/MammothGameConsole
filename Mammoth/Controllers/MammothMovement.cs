@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
-using Mammoth.Models;
+using MammothHunting.Models;
 
-namespace Mammoth.Controllers
+namespace MammothHunting.Controllers
 {
 	public class MammothMovement
 	{

@@ -1,10 +1,8 @@
 using System.Collections.Generic;
+using MammothHunting.Views;
 
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
-	/// <summary>
-	/// Охотник
-	/// </summary>
 	public class Hunter
 	{
 		private readonly object _lock = new object();
@@ -13,10 +11,10 @@ namespace Mammoth.Models
 		{
 			Head = new Pixel(initialX, initialY, headColor);
 			Body = new List<Pixel>
-				{
-					 new Pixel(initialX, initialY + 1, bodyColor),
-					 new Pixel(initialX, initialY + 2, bodyColor)
-				};
+			{
+					new Pixel(initialX, initialY + 1, bodyColor),
+					new Pixel(initialX, initialY + 2, bodyColor)
+			};
 			Spear = new Pixel(initialX + 1, initialY + 1, spearColor);
 
 			_headColor = headColor;
@@ -26,15 +24,11 @@ namespace Mammoth.Models
 			MapHeight = mapHeight;
 		}
 
-		/// <summary>
-		/// Метод перемещения охотника
-		/// </summary>
-		/// <param name="direction"></param>
 		public void Move(Direction direction)
 		{
 			lock (_lock)
 			{
-				Clear();
+				HunterView.Clear(this);
 
 				int deltaX = 0;
 				int deltaY = 0;
@@ -63,7 +57,7 @@ namespace Mammoth.Models
 					Body[i] = new Pixel(Body[i].X + deltaX, Body[i].Y + deltaY, _bodyColor);
 				}
 
-				// расположение копья зависит от направления движения
+				// Расположение копья зависит от направления движения
 				switch (direction)
 				{
 					case Direction.Left:
@@ -77,58 +71,13 @@ namespace Mammoth.Models
 						Spear = new Pixel(Spear.X + deltaX, Spear.Y + deltaY, _spearColor);
 						break;
 				}
-
-				Draw();
+				HunterView.Draw(this);
 			}
 		}
 
-		/// <summary>
-		/// Метод для отрисовки охотника
-		/// </summary>
-		public void Draw()
-		{
-			lock (_lock)
-			{
-				Head.Draw();
-				foreach (var pixel in Body)
-				{
-					pixel.Draw();
-				}
-				Spear.Draw();
-			}
-		}
-
-		/// <summary>
-		/// Метод для очистки охотника
-		/// </summary>
-		public void Clear()
-		{
-			lock (_lock)
-			{
-				Head.Clear();
-				foreach (var pixel in Body)
-				{
-					pixel.Clear();
-				}
-				Spear.Clear();
-			}
-		}
-
-		/// <summary>
-		/// Голова охотника
-		/// </summary>
 		public Pixel Head { get; private set; }
-		/// <summary>
-		/// Тело охотника
-		/// </summary>
 		public List<Pixel> Body { get; }
-		/// <summary>
-		/// Копье охотника
-		/// </summary>
 		public Pixel Spear { get; private set; }
-		/// <summary>
-		/// Цвета охотника
-		/// </summary>
 		private readonly ConsoleColor _headColor;
 		private readonly ConsoleColor _bodyColor;
 		private readonly ConsoleColor _spearColor;

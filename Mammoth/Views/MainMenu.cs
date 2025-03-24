@@ -1,35 +1,34 @@
-using System;
+using MammothHunting.Controllers;
 using static System.Console;
-using System.Threading;
-using Mammoth.Controllers;
 
-namespace Mammoth.Views
+namespace MammothHunting.Views
 {
-	class MainMenu
+	public class MainMenu
 	{
-		// размер экрана
-		private const int ScreenWidth = 55;
-		private const int ScreenHeight = 55;
+		// Размер экрана
+		public const int ScreenWidth = 150;
+		public const int ScreenHeight = 150;
+
 		static Player player = new Player();
-		static HighScoresMenu HighScoresMenu = new HighScoresMenu();
+		static HighScoresMenu highScoresMenu = new HighScoresMenu();
 
 		static void Main(string[] args)
 		{
+			SetCursorPosition(0, 0);
+			SetConsoleSize(ScreenWidth, ScreenHeight);
+			// Устанавливаем размер окна и буфера один раз при запуске программы
+			//Console.SetBufferSize(ScreenWidth, ScreenHeight);
+			//Console.SetWindowSize(ScreenWidth, ScreenHeight);
 			Show();
 		}
 
-		[System.Diagnostics.CodeAnalysis.SuppressMessage("Interoperability", "CA1416:Проверка совместимости платформы", Justification = "<Ожидание>")]
 		public static void Show()
 		{
-			Console.SetWindowSize(ScreenWidth, ScreenHeight);
-			Console.SetBufferSize(ScreenWidth, ScreenHeight);
-
 			while (true)
 			{
-				Clear();
-				RedrawMainMenu(); // Теперь вызываем обновление меню
+				RedrawMainMenu();
 
-				ConsoleKeyInfo keyInfo = Console.ReadKey(true); // true скрывает символ
+				ConsoleKeyInfo keyInfo = ReadKey(); // true скрывает символ
 				switch (keyInfo.Key)
 				{
 					case ConsoleKey.D1:
@@ -38,7 +37,7 @@ namespace Mammoth.Views
 						break;
 					case ConsoleKey.D2:
 					case ConsoleKey.NumPad2:
-						ShowPlayerInfo();
+						ShowPlayer();
 						break;
 					case ConsoleKey.D3:
 					case ConsoleKey.NumPad3:
@@ -53,46 +52,60 @@ namespace Mammoth.Views
 						Exit();
 						break;
 					default:
-						Console.SetCursorPosition(0, 9); // Сообщение выводится всегда в одном месте
-						Console.WriteLine("Неверный выбор. Попробуйте снова.");
+						SetCursorPosition(0, 9); // Сообщение выводится всегда в одном месте
+						WriteLine("Неверный выбор. Попробуйте снова.");
 						Thread.Sleep(1000);
 						break;
 				}
 			}
 		}
 
-		static void Clear()
+		private static void SetConsoleSize(int width, int height)
 		{
-			Console.Clear();
+			try
+			{
+				Console.SetBufferSize(width, height); // Устанавливаем размер буфера
+				Console.SetWindowSize(width, height); // Устанавливаем размер окна
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine($"Не удалось установить размер консоли: {ex.Message}");
+			}
 		}
 
 		static void StartGame()
 		{
+			SetCursorPosition(0, 0); // Устанавливаем курсор в начало
 			Clear();
-			Console.SetCursorPosition(0, 0);
-			Game.StartGame();
+			// Запускаем новую игру
+			var gameController = new GameController();
+			gameController.StartGame();
 		}
 
-		static void ShowPlayerInfo()
+		static void ShowPlayer()
 		{
-			Console.SetCursorPosition(0, 0);
+			//SetCursorPosition(0, 0); // Устанавливаем курсор в начало
+			//Clear();
 			player.SetName();
 		}
 
 		static void ShowHighScores()
 		{
-			Console.SetCursorPosition(0, 0);
-			HighScoresMenu.SetHighScores();
+			SetCursorPosition(0, 0); // Устанавливаем курсор в начало
+			Clear();
+			highScoresMenu.SetHighScores();
 		}
 
 		static void ShowHelp()
 		{
+			SetCursorPosition(0, 0); // Устанавливаем курсор в начало
+			Clear();
 			Help.Show();
 		}
 
 		static void Exit()
 		{
-			Console.Clear();
+			Clear();
 			WriteLine("Выход из игры...");
 			Thread.Sleep(1000);
 			Environment.Exit(0);
@@ -100,17 +113,16 @@ namespace Mammoth.Views
 
 		static void RedrawMainMenu()
 		{
-			Console.SetCursorPosition(0, 0); // Ставим курсор в левый верхний угол
-			Console.WriteLine("=== Главное меню ===     ");
-			Console.WriteLine("1. Начать игру           ");
-			Console.WriteLine("2. Игрок                 ");
-			Console.WriteLine("3. Рекорды               ");
-			Console.WriteLine("4. Справка               ");
-			Console.WriteLine("5. Выход                 ");
-			Console.WriteLine("====================      ");
-			Console.Write("Выберите опцию:          ");
-			Console.SetCursorPosition(16, 7); // Курсор ставится в точное место
+			SetCursorPosition(0, 0);
+			Clear();
+			WriteLine("=== Главное меню ===");
+			WriteLine("1. Начать игру");
+			WriteLine("2. Игрок");
+			WriteLine("3. Рекорды");
+			WriteLine("4. Справка");
+			WriteLine("5. Выход");
+			WriteLine("====================");
+			Write("Выберите опцию: ");
 		}
-
 	}
 }

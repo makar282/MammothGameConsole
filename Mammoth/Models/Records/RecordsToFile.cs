@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text.Json;
 
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
   /// <summary>
   /// Импортер/экспортер рекордов в файл

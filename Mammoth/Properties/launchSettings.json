@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Mammoth": {
+      "commandName": "Project",
+      "commandLineArgs": "/c \"mode con: cols=100 lines=100 && C:\\Projects\\Mammoth\\bin\\Debug\\net9.0\\Mammoth.exe\""
+    }
+  }
+}

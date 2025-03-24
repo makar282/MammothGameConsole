@@ -1,22 +1,13 @@
 using System;
 using System.Collections.Generic;
+using MammothHunting.Views;
 
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
-	/// <summary>
-	/// Класс мамонта
-	/// </summary>
 	public class Mammoth
 	{
 		private readonly object _lock = new object();
 
-		/// <summary>
-		/// Конструктор мамонта
-		/// </summary>
-		/// <param name="initialX"></param>
-		/// <param name="initialY"></param>
-		/// <param name="mammothColor"></param>
-		/// <param name="tuskColor"></param>
 		public Mammoth(int initialX, int initialY, ConsoleColor mammothColor, ConsoleColor tuskColor)
 		{
 			_mammothColor = mammothColor;
@@ -24,75 +15,35 @@ namespace Mammoth.Models
 
 			// Основное тело
 			Body = new List<Pixel>
-				{
-					 new Pixel(initialX - 2, initialY, mammothColor),
-					 new Pixel(initialX - 1, initialY, mammothColor),
-					 new Pixel(initialX - 2, initialY + 1, mammothColor),
-					 new Pixel(initialX - 1, initialY + 1, mammothColor),
-					 new Pixel(initialX - 1, initialY + 2, ConsoleColor.DarkYellow),
-					 new Pixel(initialX - 2, initialY + 2, ConsoleColor.DarkYellow),
-				};
+			{
+				new Pixel(initialX - 2, initialY, mammothColor),
+				new Pixel(initialX - 1, initialY, mammothColor),
+				new Pixel(initialX - 2, initialY + 1, mammothColor),
+				new Pixel(initialX - 1, initialY + 1, mammothColor),
+				new Pixel(initialX - 1, initialY + 2, ConsoleColor.DarkYellow),
+				new Pixel(initialX - 2, initialY + 2, ConsoleColor.DarkYellow),
+			};
 
 			// Голова (отдельный пиксель сверху)
 			Head = new Pixel(initialX, initialY, mammothColor);
 
 			// Бивень (наискосок справа от головы)
 			Tusk = new List<Pixel>
-				{
-					 new Pixel(initialX, initialY + 1, tuskColor),
-					 new Pixel(initialX + 1, initialY + 2, tuskColor),
-				};
-
-			Draw();
-		}
-
-		/// <summary>
-		/// Метод отрисовки мамонта
-		/// </summary>
-		public void Draw()
-		{
-			lock (_lock)
 			{
-				foreach (Pixel pixel in Body)
-				{
-					pixel.Draw();
-				}
-				Head.Draw();
-				foreach (Pixel pixel in Tusk)
-				{
-					pixel.Draw();
-				}
-			}
+				new Pixel(initialX, initialY + 1, tuskColor),
+				new Pixel(initialX + 1, initialY + 2, tuskColor),
+			};
+
+			// Используем полное имя класса для вызова метода Draw
+			MammothView.Draw(this); 
 		}
 
-		/// <summary>
-		/// Метод очистки мамонта
-		/// </summary>
-		public void Clear()
-		{
-			lock (_lock)
-			{
-				foreach (Pixel pixel in Body)
-				{
-					pixel.Clear();
-				}
-				Head.Clear();
-				foreach (Pixel pixel in Tusk)
-				{
-					pixel.Clear();
-				}
-			}
-		}
-
-		/// <summary>
-		/// Метод движения мамонта
-		/// </summary>
-		/// <param name="currentTarget"></param>
 		internal void MoveTowards(Pixel currentTarget)
 		{
 			lock (_lock)
 			{
-				Clear();
+				// Используем полное имя класса для вызова метода Clear
+				MammothView.Clear(this); 
 
 				int deltaX = 0;
 				int deltaY = 0;
@@ -119,7 +70,8 @@ namespace Mammoth.Models
 					Tusk[i] = new Pixel(Tusk[i].X + deltaX, Tusk[i].Y + deltaY, _tuskColor);
 				}
 
-				Draw();
+				// Используем полное имя класса для вызова метода Draw
+				MammothView.Draw(this); 
 			}
 		}
 
@@ -127,10 +79,12 @@ namespace Mammoth.Models
 		/// тело мамонта
 		/// </summary>
 		public List<Pixel> Body { get; }
+
 		/// <summary>
 		/// голова мамонта
 		/// </summary>
 		public Pixel Head { get; private set; }
+
 		/// <summary>
 		/// бивень мамонта
 		/// </summary>
@@ -140,6 +94,7 @@ namespace Mammoth.Models
 		/// цвет тела
 		/// </summary>
 		private readonly ConsoleColor _mammothColor;
+
 		/// <summary>
 		/// цвет бивня
 		/// </summary>

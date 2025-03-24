@@ -1,6 +1,6 @@
 using System;
 
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
 	// класс Pixel'a 
 	public readonly struct Pixel

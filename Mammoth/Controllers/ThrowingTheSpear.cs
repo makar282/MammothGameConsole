@@ -1,23 +1,19 @@
-using System;
-using System.Threading.Tasks;
-using Mammoth.Models;
+using MammothHunting.Models;
 
-namespace Mammoth.Controllers
+namespace MammothHunting.Controllers
 {
-	/// <summary>
-	/// Класс бросания копья
-	/// </summary>
+	// Класс бросания копья
 	public class ThrowingTheSpear
 	{
 		private readonly Hunter _hunter;
-		private readonly Models.Mammoth _mammoth;
+		private readonly Mammoth _mammoth;
 		private Pixel _spear;
 		private Direction _direction;
 		private bool _isThrown;
 		private Action _onHit;
-		public static bool isGameOver = false;
+		public bool IsTargetHit { get; private set; }
 
-		public ThrowingTheSpear(Hunter hunter, Models.Mammoth mammoth, Action onHit)
+		public ThrowingTheSpear(Hunter hunter, Mammoth mammoth, Action onHit)
 		{
 			_hunter = hunter;
 			_mammoth = mammoth;
@@ -35,14 +31,13 @@ namespace Mammoth.Controllers
 			Task.Run(MoveSpear);
 		}
 
-		// Метод движения копья
 		private async Task MoveSpear()
 		{
 			while (_isThrown)
 			{
 				_spear.Clear();
 
-				// Перемещаем копьё в зависимости от направления
+				// Перемещаем копьё
 				_spear = _direction switch
 				{
 					Direction.Up => new Pixel(_spear.X, _spear.Y - 1, _spear.Color),
@@ -56,25 +51,18 @@ namespace Mammoth.Controllers
 
 				// Проверка на попадание в мамонта
 				if (_mammoth.Head.X == _spear.X && _mammoth.Head.Y == _spear.Y ||
-					 _mammoth.Body.Exists(pixel => pixel.X == _spear.X && pixel.Y == _spear.Y) ||
-					 _mammoth.Tusk.Exists(pixel => pixel.X == _spear.X && pixel.Y == _spear.Y))
+					_mammoth.Body.Exists(pixel => pixel.X == _spear.X && pixel.Y == _spear.Y) ||
+					_mammoth.Tusk.Exists(pixel => pixel.X == _spear.X && pixel.Y == _spear.Y))
 				{
-					_isThrown = false;
+					IsTargetHit = true;	
 					_spear.Clear();
-					isGameOver = true;
-					_onHit?.Invoke();
+					//_onHit?.Invoke();  // Теперь `onHit` изменит `GameModel.IsGameOver`
 					return;
-				}
-
-				// Проверка на выход за границы карты
-				if (_spear.X < 0 || _spear.X >= _hunter.MapWidth || _spear.Y < 0 || _spear.Y >= _hunter.MapHeight)
-				{
-					_isThrown = false;
-					_spear.Clear();
 				}
 
 				await Task.Delay(100);
 			}
 		}
 	}
+
 }

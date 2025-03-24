@@ -1,7 +1,7 @@
 using System;
 using static System.Console;
 
-namespace Mammoth.Views
+namespace MammothHunting.Views
 {
 	class Help
 	{

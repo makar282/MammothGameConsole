@@ -1,4 +1,4 @@
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
 	/// <summary>
 	/// Направление движения

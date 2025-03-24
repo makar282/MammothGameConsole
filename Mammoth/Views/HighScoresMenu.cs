@@ -1,9 +1,9 @@
 using System;
 using System.Linq;
 using static System.Console;
-using Mammoth.Models;
+using MammothHunting.Models;
 
-namespace Mammoth.Views
+namespace MammothHunting.Views
 {
 	public class HighScoresMenu
 	{

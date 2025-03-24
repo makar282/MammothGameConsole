@@ -5,7 +5,7 @@ using System.Text;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
-namespace Mammoth.Models
+namespace MammothHunting.Models
 {
   /// <summary>
   /// Запись рекордов игрока

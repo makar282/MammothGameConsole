@@ -1,7 +1,7 @@
 using System;
 using static System.Console;
 
-namespace Mammoth.Views
+namespace MammothHunting.Views
 {
 	public class Player
 	{
@@ -9,12 +9,17 @@ namespace Mammoth.Views
 
 		public void SetName()
 		{
-			Clear();
+			Console.SetCursorPosition(0, 0); // Устанавливаем курсор в начало
+			Clear(); // Очищаем экран только здесь
+
 			WriteLine("=== Ввод имени игрока ===");
 			Write("Введите ваше имя: ");
+			Console.SetCursorPosition(0, 2); // Перемещаем курсор на третью строку
 			Name = ReadLine();
+			Console.SetCursorPosition(0, 3);
 			WriteLine($"Ваше имя: {Name}");
 			WriteLine("Нажмите любую клавишу, чтобы вернуться в главное меню...");
+
 			ReadKey();
 			MainMenu.Show();
 		}

@@ -22,3 +22,5 @@ highscores.json
 
 # Игнорировать логи
 *.log
+
+.vs/

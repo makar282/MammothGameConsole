@@ -1,6 +1,6 @@
 // using System;
 // using System.IO;
-// using Mammoth.Controllers;
+// using MammothHunting.Controllers;
 
 // namespace Mammoth.Tests
 // {
