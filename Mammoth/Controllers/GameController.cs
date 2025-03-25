@@ -1,10 +1,10 @@
 ﻿using MammothHunting.Models;
+using MammothHunting.Models.MammothHunting.Models;
 using MammothHunting.Views;
 using System.Diagnostics;
 
 namespace MammothHunting.Controllers
 {
-	// GameController.cs
 	public class GameController
 	{
 		private GameModel _gameModel;
@@ -33,12 +33,16 @@ namespace MammothHunting.Controllers
 					_currentDirection = ReadMovement(_currentDirection);
 
 					// Обновление состояния
-					_gameModel.Update(_currentDirection, CheckThrowInput());
+					bool throwSpear = CheckThrowInput();
+					_gameModel.Update(_currentDirection, throwSpear);
 
 					// Отрисовка
 					GameView.ClearGameArea();
 					GameView.DrawBorder();
-					GameView.DrawGameObjects(_gameModel.Hunter, _gameModel.Mammoth);
+					GameView.DrawGameObjects(
+						_gameModel.Hunter,
+						_gameModel.Mammoth,
+						_gameModel._throwingTheSpear);
 
 					// Задержка для стабильного FPS
 					while (frameStopwatch.ElapsedMilliseconds < FrameDelay)
@@ -61,6 +65,7 @@ namespace MammothHunting.Controllers
 			}
 		}
 
+
 		private bool CheckThrowInput()
 		{
 			if (!Console.KeyAvailable) return false;
@@ -71,7 +76,6 @@ namespace MammothHunting.Controllers
 				MainMenu.Show();
 				return false;
 			}
-
 			return key == ConsoleKey.Spacebar;
 		}
 

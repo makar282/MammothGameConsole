@@ -6,8 +6,8 @@ namespace MammothHunting.Views
 	public class MainMenu
 	{
 		// Размер экрана
-		public const int ScreenWidth = 150;
-		public const int ScreenHeight = 150;
+		public const int ScreenWidth = 80;
+		public const int ScreenHeight = 50;
 
 		static Player player = new Player();
 		static HighScoresMenu highScoresMenu = new HighScoresMenu();

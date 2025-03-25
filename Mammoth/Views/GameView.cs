@@ -1,31 +1,38 @@
 ﻿using System;
 using MammothHunting.Models;
+using MammothHunting.Models.MammothHunting.Models;
 
 namespace MammothHunting.Views
 {
 	public static class GameView
 	{
-		// Отрисовка границ
 		public static void DrawBorder()
 		{
-			for (int i = 1; i < GameModel.MapWidth; i++)
+			// Проверяем, чтобы границы не выходили за пределы консоли
+			int maxX = Math.Min(GameModel.MapWidth, MainMenu.ScreenWidth) - 1;
+			int maxY = Math.Min(GameModel.MapHeight, MainMenu.ScreenHeight) - 1;
+
+			// Верхняя и нижняя границы
+			for (int i = 1; i < maxX; i++)
 			{
 				new Pixel(i, 1, ConsoleColor.DarkGreen).Draw();
-				new Pixel(i, GameModel.MapHeight - 1, ConsoleColor.DarkGreen).Draw();
+				new Pixel(i, maxY - 1, ConsoleColor.DarkGreen).Draw();
 			}
 
-			for (int i = 1; i < GameModel.MapHeight; i++)
+			// Левая и правая границы
+			for (int i = 1; i < maxY; i++)
 			{
 				new Pixel(1, i, ConsoleColor.DarkGreen).Draw();
-				new Pixel(GameModel.MapWidth - 1, i, ConsoleColor.DarkGreen).Draw();
+				new Pixel(maxX - 1, i, ConsoleColor.DarkGreen).Draw();
 			}
 		}
 
-		// Отрисовка охотника и мамонта
-		public static void DrawGameObjects(Hunter hunter, Mammoth mammoth)
+		// Отрисовка всех игровых объектов
+		public static void DrawGameObjects(Hunter hunter, Mammoth mammoth, ThrowingTheSpear spear)
 		{
 			HunterView.Draw(hunter);
 			MammothView.Draw(mammoth);
+			spear.Draw(); // Добавляем отрисовку копья
 		}
 
 		// Очистка игровой области
@@ -38,4 +45,4 @@ namespace MammothHunting.Views
 			}
 		}
 	}
-}	
+}

@@ -31,7 +31,7 @@ namespace MammothHunting.Controllers
 
 		private Pixel GenerateNewTarget()
 		{
-			return new Pixel(Random.Next(2, _mapWidth - 3), Random.Next(2, _mapHeight - 3), ConsoleColor.DarkGray);
+			return new Pixel(Random.Next(3, _mapWidth - 3), Random.Next(2, _mapHeight - 4), ConsoleColor.DarkGray);
 		}
 	}
 }

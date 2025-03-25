@@ -12,7 +12,7 @@ namespace MammothHunting.Views
             {
                 pixel.Draw();
             }
-            hunter.Spear.Draw();
+            //hunter.Spear.Draw();
         }
 
         public static void Clear(Hunter hunter)
@@ -22,7 +22,7 @@ namespace MammothHunting.Views
             {
                 pixel.Clear();
             }
-            hunter.Spear.Clear();
+            //hunter.Spear.Clear();
         }
     }
 }

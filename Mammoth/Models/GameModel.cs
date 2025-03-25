@@ -2,62 +2,73 @@
 using MammothHunting.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.Diagnostics;
 
 namespace MammothHunting.Models
 {
-	// GameModel.cs
-	public class GameModel
+	namespace MammothHunting.Models
 	{
-		public const int MapWidth = 51;
-		public const int MapHeight = 31;
-
-		public Hunter Hunter { get; }
-		public Mammoth Mammoth { get; }
-		public int Score { get; private set; } = 1000;
-		public bool IsGameOver { get; private set; }
-
-		private readonly MammothMovement _mammothMovement;
-		private readonly ThrowingTheSpear _throwingTheSpear;
-		private readonly Stopwatch _stopwatch;
-
-		public GameModel()
+		public class GameModel
 		{
-			Hunter = new Hunter(10, 5, ConsoleColor.DarkYellow, ConsoleColor.White, ConsoleColor.DarkGray, MapWidth, MapHeight);
-			Mammoth = new Mammoth(20, 20, ConsoleColor.DarkGray, ConsoleColor.White);
-			_mammothMovement = new MammothMovement(MapWidth, MapHeight);
-			_throwingTheSpear = new ThrowingTheSpear(Hunter, Mammoth, () => IsGameOver = true);
-			_stopwatch = Stopwatch.StartNew();
-		}
+			public const int MapWidth = 70;
+			public const int MapHeight = 30;
 
-		public void Update(Direction direction, bool throwSpear)
-		{
-			if (IsGameOver) return;
+			public Hunter Hunter { get; }
+			public Mammoth Mammoth { get; }
+			public int Score { get; private set; } = 1000;
+			public bool IsGameOver { get; private set; }
 
-			Hunter.Move(direction);
-			_mammothMovement.MoveMammoth(Mammoth);
+			private readonly MammothMovement _mammothMovement;
+			public ThrowingTheSpear _throwingTheSpear;
+			private readonly Stopwatch _stopwatch;
 
-			if (throwSpear)
+			public GameModel()
 			{
-				_throwingTheSpear.Throw(direction);
+				Hunter = new Hunter(10, 5, ConsoleColor.DarkYellow, ConsoleColor.White, MapWidth, MapHeight);
+				Mammoth = new Mammoth(20, 20, ConsoleColor.DarkGray, ConsoleColor.White);
+				_mammothMovement = new MammothMovement(MapWidth, MapHeight);
+				_throwingTheSpear = new ThrowingTheSpear(Hunter, Mammoth, () => IsGameOver = true);
+				_stopwatch = Stopwatch.StartNew();
 			}
 
-			UpdateScore();
-			CheckGameOver();
-		}
+			public void Update(Direction direction, bool throwSpear)
+			{
+				if (IsGameOver) return;
 
-		private void UpdateScore()
-		{
-			int elapsed = (int)_stopwatch.Elapsed.TotalSeconds;
-			Score = 1000 - Math.Max(0, elapsed - 30) * 10 - Math.Min(30, elapsed) * 10;
-		}
+				Hunter.Move(direction);
+				_mammothMovement.MoveMammoth(Mammoth);
 
-		private void CheckGameOver()
-		{
-			var head = Hunter.Head;
-			IsGameOver = head.X <= 1 || head.X >= MapWidth - 1 ||
-						 head.Y <= 1 || head.Y >= MapHeight - 1 ||
-						 _throwingTheSpear.IsTargetHit;
+				if (throwSpear)
+				{
+					_throwingTheSpear.Throw(direction);
+				}
+
+				UpdateScore();
+				CheckGameOver();
+			}
+
+			private void UpdateScore()
+			{
+				int elapsed = (int)_stopwatch.Elapsed.TotalSeconds;
+				Score = 1000 - Math.Max(0, elapsed - 30) * 10 - Math.Min(30, elapsed) * 10;
+			}
+
+			private void CheckGameOver()
+			{
+				var head = Hunter.Head;
+				if (head.X <= 2 || head.X >= MapWidth - 2 ||
+					head.Y <= 2 || head.Y >= MapHeight - 1)
+				{
+					IsGameOver = true;
+					Score = 0;
+				}
+				else if (_throwingTheSpear.IsTargetHit)
+				{
+					IsGameOver = true;
+					UpdateScore();
+				}
+			}
 		}
 	}
 }
