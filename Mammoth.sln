@@ -5,18 +5,30 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mammoth", "Mammoth\Mammoth.csproj", "{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MammothHunting.Tests", "MammothHunting.Tests\MammothHunting.Tests.csproj", "{60EDB65C-ADA4-4686-A94B-AF1467DB829E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44} = {61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{61E75F33-CDB7-40E4-A7F1-F6B9AA1D2C44}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60EDB65C-ADA4-4686-A94B-AF1467DB829E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60EDB65C-ADA4-4686-A94B-AF1467DB829E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60EDB65C-ADA4-4686-A94B-AF1467DB829E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60EDB65C-ADA4-4686-A94B-AF1467DB829E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D461607B-9DEF-40B3-8A22-8E1D658605D6}
 	EndGlobalSection
 EndGlobal

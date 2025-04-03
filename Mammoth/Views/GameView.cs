@@ -1,6 +1,6 @@
-﻿using System;
+﻿using MammothHunting.Controllers;
 using MammothHunting.Models;
-using MammothHunting.Models.MammothHunting.Models;
+using System;
 
 namespace MammothHunting.Views
 {
@@ -28,11 +28,11 @@ namespace MammothHunting.Views
 		}
 
 		// Отрисовка всех игровых объектов
-		public static void DrawGameObjects(Hunter hunter, Mammoth mammoth, ThrowingTheSpear spear)
+		public static void DrawGameObjects(Hunter hunter, Mammoth mammoth, ThrowingTheSpearController spear)
 		{
 			HunterView.Draw(hunter);
 			MammothView.Draw(mammoth);
-			spear.Draw(); // Добавляем отрисовку копья
+			//spear.Draw(); // Добавляем отрисовку копья
 		}
 
 		// Очистка игровой области
@@ -40,8 +40,9 @@ namespace MammothHunting.Views
 		{
 			for (int y = 2; y < GameModel.MapHeight - 2; y++)
 			{
-				Console.SetCursorPosition(3, y);
-				Console.Write(new string(' ', GameModel.MapWidth - 3));
+
+				Console.SetCursorPosition(2, y);
+				Console.Write(new string(' ', GameModel.MapWidth - 4));
 			}
 		}
 	}

@@ -6,7 +6,7 @@ namespace MammothHunting.Views
 	public static class MammothView
 	{
 		/// <summary>
-		/// РњРµС‚РѕРґ РѕС‚СЂРёСЃРѕРІРєРё РјР°РјРѕРЅС‚Р°
+		/// Метод отрисовки мамонта
 		/// </summary>
 		public static void Draw(MammothHunting.Models.Mammoth mammoth)
 		{
@@ -25,7 +25,7 @@ namespace MammothHunting.Views
 		}
 
 		/// <summary>
-		/// РњРµС‚РѕРґ РѕС‡РёСЃС‚РєРё РјР°РјРѕРЅС‚Р°
+		/// Метод очистки мамонта
 		/// </summary>
 		public static void Clear(MammothHunting.Models.Mammoth mammoth)
 		{
@@ -41,6 +41,16 @@ namespace MammothHunting.Views
 					pixel.Clear();
 				}
 			}
+		}
+
+		// Временный класс-обёртка для тестов
+		public static class MammothViewWrapper
+		{
+			public static Action<Mammoth> OnDraw { get; set; } = MammothView.Draw;
+			public static Action<Mammoth> OnClear { get; set; } = MammothView.Clear;
+
+			public static void Draw(Mammoth m) => OnDraw(m);
+			public static void Clear(Mammoth m) => OnClear(m);
 		}
 	}
 }

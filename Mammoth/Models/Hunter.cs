@@ -45,7 +45,7 @@ namespace MammothHunting.Models
 				{
 					Body[i] = new Pixel(Body[i].X + deltaX, Body[i].Y + deltaY, _bodyColor);
 				}
-
+				// Рисуем охотника
 				HunterView.Draw(this);
 			}
 		}

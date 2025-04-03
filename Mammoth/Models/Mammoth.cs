@@ -35,15 +35,15 @@ namespace MammothHunting.Models
 			};
 
 			// Используем полное имя класса для вызова метода Draw
-			MammothView.Draw(this); 
+			MammothView.Draw(this);
 		}
 
-		internal void MoveTowards(Pixel currentTarget)
+		public void MoveTowards(Pixel currentTarget)
 		{
 			lock (_lock)
 			{
 				// Используем полное имя класса для вызова метода Clear
-				MammothView.Clear(this); 
+				MammothView.Clear(this);
 
 				int deltaX = 0;
 				int deltaY = 0;
@@ -71,7 +71,26 @@ namespace MammothHunting.Models
 				}
 
 				// Используем полное имя класса для вызова метода Draw
-				MammothView.Draw(this); 
+				MammothView.Draw(this);
+			}
+		}
+
+		// В класс Mammoth добавьте этот метод
+		internal void TestMoveTowards(Pixel target, Action<Mammoth> onClear, Action<Mammoth> onDraw)
+		{
+			lock (_lock)
+			{
+				onClear(this); // Используем переданные методы вместо MammothView
+
+				int deltaX = Math.Sign(target.X - Head.X);
+				int deltaY = Math.Sign(target.Y - Head.Y);
+
+				// Остальная логика перемещения без изменений...
+				Head = new Pixel(Head.X + deltaX, Head.Y + deltaY, _mammothColor);
+
+				// ... (аналогично для Body и Tusk)
+
+				onDraw(this);
 			}
 		}
 

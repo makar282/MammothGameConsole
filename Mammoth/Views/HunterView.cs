@@ -12,17 +12,15 @@ namespace MammothHunting.Views
             {
                 pixel.Draw();
             }
-            //hunter.Spear.Draw();
         }
 
         public static void Clear(Hunter hunter)
         {
             hunter.Head.Clear();
             foreach (var pixel in hunter.Body)
-            {
+            {   
                 pixel.Clear();
             }
-            //hunter.Spear.Clear();
         }
     }
 }

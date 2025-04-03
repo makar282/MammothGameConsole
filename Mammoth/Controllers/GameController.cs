@@ -1,5 +1,4 @@
 ﻿using MammothHunting.Models;
-using MammothHunting.Models.MammothHunting.Models;
 using MammothHunting.Views;
 using System.Diagnostics;
 
@@ -8,6 +7,8 @@ namespace MammothHunting.Controllers
 	public class GameController
 	{
 		private GameModel _gameModel;
+		private ThrowingTheSpearController _spearController;
+		private ThrowingTheSpearView _spearView;
 		private Direction _currentDirection;
 		private const int FrameDelay = 150;
 
@@ -35,20 +36,18 @@ namespace MammothHunting.Controllers
 					// Обновление состояния
 					bool throwSpear = CheckThrowInput();
 					_gameModel.Update(_currentDirection, throwSpear);
-
+					_spearView = new ThrowingTheSpearView();
+					_spearController = new ThrowingTheSpearController(_gameModel.SpearModel, _spearView);
 					// Отрисовка
 					GameView.ClearGameArea();
 					GameView.DrawBorder();
-					GameView.DrawGameObjects(
-						_gameModel.Hunter,
-						_gameModel.Mammoth,
-						_gameModel._throwingTheSpear);
+					GameView.DrawGameObjects(_gameModel.Hunter, _gameModel.Mammoth, _spearController);
 
 					// Задержка для стабильного FPS
 					while (frameStopwatch.ElapsedMilliseconds < FrameDelay)
 					{
 						Thread.Sleep(10);
-					}
+					}	
 				}
 				catch (Exception ex)
 				{
@@ -65,7 +64,7 @@ namespace MammothHunting.Controllers
 			}
 		}
 
-
+		// Проверка ввода на бросок копья
 		private bool CheckThrowInput()
 		{
 			if (!Console.KeyAvailable) return false;
@@ -79,6 +78,7 @@ namespace MammothHunting.Controllers
 			return key == ConsoleKey.Spacebar;
 		}
 
+		// Завершение игры
 		private void EndGame()
 		{
 			Console.Clear();
@@ -89,6 +89,7 @@ namespace MammothHunting.Controllers
 			MainMenu.Show();
 		}
 
+		// Обработка ввода движения
 		private Direction ReadMovement(Direction currentDirection)
 		{
 			if (!Console.KeyAvailable) return currentDirection;
