@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MammothHunting.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+df47eb11072bd43d6c9ca72a3ed507dc635fdf5c")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f06da7317956c0f2db8dc0117abb58db8d9b587")]
 [assembly: System.Reflection.AssemblyProductAttribute("MammothHunting.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MammothHunting.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

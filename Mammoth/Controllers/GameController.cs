@@ -7,22 +7,21 @@ namespace MammothHunting.Controllers
 	public class GameController
 	{
 		private GameModel _gameModel;
-		private ThrowingTheSpearController _spearController;
-		private ThrowingTheSpearView _spearView;
 		private Direction _currentDirection;
 		private const int FrameDelay = 150;
 
 		public GameController()
 		{
-			_currentDirection = Direction.Right;
+			_currentDirection = Direction.Right; // Начальное направление движения
 		}
 
 		public void StartGame()
 		{
-			_gameModel = new GameModel();
-			Console.CursorVisible = false;
+			_gameModel = GameModelFactory.Create(); // Используем фабрику для создания модели игры
+			Console.CursorVisible = false; // Скрываем курсор
 
 			var frameStopwatch = new Stopwatch();
+			GameView.DrawBorder(); // Рисуем границу игрового поля
 
 			while (!_gameModel.IsGameOver)
 			{
@@ -30,24 +29,14 @@ namespace MammothHunting.Controllers
 
 				try
 				{
-					// Обработка ввода
-					_currentDirection = ReadMovement(_currentDirection);
+					_currentDirection = ReadMovement(_currentDirection); // Читаем направление движения
+					bool throwSpear = CheckThrowInput(); // Проверяем ввод для броска копья
+					_gameModel.Update(_currentDirection, throwSpear); // Обновляем состояние игры
 
-					// Обновление состояния
-					bool throwSpear = CheckThrowInput();
-					_gameModel.Update(_currentDirection, throwSpear);
-					_spearView = new ThrowingTheSpearView();
-					_spearController = new ThrowingTheSpearController(_gameModel.SpearModel, _spearView);
-					// Отрисовка
-					GameView.ClearGameArea();
-					GameView.DrawBorder();
-					GameView.DrawGameObjects(_gameModel.Hunter, _gameModel.Mammoth, _spearController);
-
-					// Задержка для стабильного FPS
 					while (frameStopwatch.ElapsedMilliseconds < FrameDelay)
 					{
-						Thread.Sleep(10);
-					}	
+						Thread.Sleep(10); // Задержка для обеспечения частоты кадров
+					}
 				}
 				catch (Exception ex)
 				{
@@ -60,40 +49,35 @@ namespace MammothHunting.Controllers
 
 			if (_gameModel.IsGameOver)
 			{
-				EndGame();
+				EndGame(); // Завершаем игру
 			}
 		}
 
-		// Проверка ввода на бросок копья
 		private bool CheckThrowInput()
 		{
 			if (!Console.KeyAvailable) return false;
-
 			var key = Console.ReadKey(true).Key;
 			if (key == ConsoleKey.Escape)
 			{
-				MainMenu.Show();
+				MainMenu.Show(); // Показываем главное меню при нажатии Escape
 				return false;
 			}
-			return key == ConsoleKey.Spacebar;
+			return key == ConsoleKey.Spacebar; // Бросок копья при нажатии пробела
 		}
 
-		// Завершение игры
 		private void EndGame()
 		{
 			Console.Clear();
 			Console.SetCursorPosition(20, 15);
-			Console.WriteLine($"Game Over! Score: {_gameModel.Score}");
-			Console.WriteLine("Нажмите любую клавишу...");
+			Console.WriteLine($"Game Over! Score: {_gameModel.Score}"); // Выводим результат игры
 			Console.ReadKey();
-			MainMenu.Show();
+			User.Instance.SaveScore(_gameModel.Score); // Сохраняем результат с именем из User
+			MainMenu.Show(); // Показываем главное меню
 		}
 
-		// Обработка ввода движения
 		private Direction ReadMovement(Direction currentDirection)
 		{
 			if (!Console.KeyAvailable) return currentDirection;
-
 			var key = Console.ReadKey(true).Key;
 			return key switch
 			{

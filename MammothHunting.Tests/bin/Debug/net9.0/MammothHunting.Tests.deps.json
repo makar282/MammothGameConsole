@@ -9,11 +9,11 @@
       "MammothHunting.Tests/1.0.0": {
         "dependencies": {
           "Mammoth": "1.0.0",
-          "Microsoft.NET.Test.Sdk": "17.12.0",
+          "Microsoft.NET.Test.Sdk": "17.13.0",
           "Moq": "4.20.72",
-          "coverlet.collector": "6.0.2",
+          "coverlet.collector": "6.0.4",
           "xunit": "2.9.3",
-          "xunit.runner.visualstudio": "2.8.2"
+          "xunit.runner.visualstudio": "3.0.2"
         },
         "runtime": {
           "MammothHunting.Tests.dll": {}
@@ -30,37 +30,37 @@
           }
         }
       },
-      "coverlet.collector/6.0.2": {},
-      "Microsoft.CodeCoverage/17.12.0": {
+      "coverlet.collector/6.0.4": {},
+      "Microsoft.CodeCoverage/17.13.0": {
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.VisualStudio.CodeCoverage.Shim.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.524.48002"
+            "fileVersion": "17.1300.124.60202"
           }
         }
       },
-      "Microsoft.NET.Test.Sdk/17.12.0": {
+      "Microsoft.NET.Test.Sdk/17.13.0": {
         "dependencies": {
-          "Microsoft.CodeCoverage": "17.12.0",
-          "Microsoft.TestPlatform.TestHost": "17.12.0"
+          "Microsoft.CodeCoverage": "17.13.0",
+          "Microsoft.TestPlatform.TestHost": "17.13.0"
         }
       },
-      "Microsoft.TestPlatform.ObjectModel/17.12.0": {
+      "Microsoft.TestPlatform.ObjectModel/17.13.0": {
         "dependencies": {
           "System.Reflection.Metadata": "1.6.0"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.TestPlatform.CoreUtilities.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/Microsoft.TestPlatform.PlatformAbstractions.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.ObjectModel.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           }
         },
         "resources": {
@@ -144,31 +144,31 @@
           }
         }
       },
-      "Microsoft.TestPlatform.TestHost/17.12.0": {
+      "Microsoft.TestPlatform.TestHost/17.13.0": {
         "dependencies": {
-          "Microsoft.TestPlatform.ObjectModel": "17.12.0",
+          "Microsoft.TestPlatform.ObjectModel": "17.13.0",
           "Newtonsoft.Json": "13.0.1"
         },
         "runtime": {
           "lib/netcoreapp3.1/Microsoft.TestPlatform.CommunicationUtilities.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/Microsoft.TestPlatform.CrossPlatEngine.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/Microsoft.TestPlatform.Utilities.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/Microsoft.VisualStudio.TestPlatform.Common.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           },
           "lib/netcoreapp3.1/testhost.dll": {
             "assemblyVersion": "15.0.0.0",
-            "fileVersion": "17.1200.24.56501"
+            "fileVersion": "17.1300.25.10604"
           }
         },
         "resources": {
@@ -385,7 +385,7 @@
           }
         }
       },
-      "xunit.runner.visualstudio/2.8.2": {},
+      "xunit.runner.visualstudio/3.0.2": {},
       "Mammoth/1.0.0": {
         "runtime": {
           "Mammoth.dll": {
@@ -409,40 +409,40 @@
       "path": "castle.core/5.1.1",
       "hashPath": "castle.core.5.1.1.nupkg.sha512"
     },
-    "coverlet.collector/6.0.2": {
+    "coverlet.collector/6.0.4": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-bJShQ6uWRTQ100ZeyiMqcFlhP7WJ+bCuabUs885dJiBEzMsJMSFr7BOyeCw4rgvQokteGi5rKQTlkhfQPUXg2A==",
-      "path": "coverlet.collector/6.0.2",
-      "hashPath": "coverlet.collector.6.0.2.nupkg.sha512"
+      "sha512": "sha512-lkhqpF8Pu2Y7IiN7OntbsTtdbpR1syMsm2F3IgX6ootA4ffRqWL5jF7XipHuZQTdVuWG/gVAAcf8mjk8Tz0xPg==",
+      "path": "coverlet.collector/6.0.4",
+      "hashPath": "coverlet.collector.6.0.4.nupkg.sha512"
     },
-    "Microsoft.CodeCoverage/17.12.0": {
+    "Microsoft.CodeCoverage/17.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-4svMznBd5JM21JIG2xZKGNanAHNXplxf/kQDFfLHXQ3OnpJkayRK/TjacFjA+EYmoyuNXHo/sOETEfcYtAzIrA==",
-      "path": "microsoft.codecoverage/17.12.0",
-      "hashPath": "microsoft.codecoverage.17.12.0.nupkg.sha512"
+      "sha512": "sha512-9LIUy0y+DvUmEPtbRDw6Bay3rzwqFV8P4efTrK4CZhQle3M/QwLPjISghfcolmEGAPWxuJi6m98ZEfk4VR4Lfg==",
+      "path": "microsoft.codecoverage/17.13.0",
+      "hashPath": "microsoft.codecoverage.17.13.0.nupkg.sha512"
     },
-    "Microsoft.NET.Test.Sdk/17.12.0": {
+    "Microsoft.NET.Test.Sdk/17.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-kt/PKBZ91rFCWxVIJZSgVLk+YR+4KxTuHf799ho8WNiK5ZQpJNAEZCAWX86vcKrs+DiYjiibpYKdGZP6+/N17w==",
-      "path": "microsoft.net.test.sdk/17.12.0",
-      "hashPath": "microsoft.net.test.sdk.17.12.0.nupkg.sha512"
+      "sha512": "sha512-W19wCPizaIC9Zh47w8wWI/yxuqR7/dtABwOrc8r2jX/8mUNxM2vw4fXDh+DJTeogxV+KzKwg5jNNGQVwf3LXyA==",
+      "path": "microsoft.net.test.sdk/17.13.0",
+      "hashPath": "microsoft.net.test.sdk.17.13.0.nupkg.sha512"
     },
-    "Microsoft.TestPlatform.ObjectModel/17.12.0": {
+    "Microsoft.TestPlatform.ObjectModel/17.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-TDqkTKLfQuAaPcEb3pDDWnh7b3SyZF+/W9OZvWFp6eJCIiiYFdSB6taE2I6tWrFw5ywhzOb6sreoGJTI6m3rSQ==",
-      "path": "microsoft.testplatform.objectmodel/17.12.0",
-      "hashPath": "microsoft.testplatform.objectmodel.17.12.0.nupkg.sha512"
+      "sha512": "sha512-bt0E0Dx+iqW97o4A59RCmUmz/5NarJ7LRL+jXbSHod72ibL5XdNm1Ke+UO5tFhBG4VwHLcSjqq9BUSblGNWamw==",
+      "path": "microsoft.testplatform.objectmodel/17.13.0",
+      "hashPath": "microsoft.testplatform.objectmodel.17.13.0.nupkg.sha512"
     },
-    "Microsoft.TestPlatform.TestHost/17.12.0": {
+    "Microsoft.TestPlatform.TestHost/17.13.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-MiPEJQNyADfwZ4pJNpQex+t9/jOClBGMiCiVVFuELCMSX2nmNfvUor3uFVxNNCg30uxDP8JDYfPnMXQzsfzYyg==",
-      "path": "microsoft.testplatform.testhost/17.12.0",
-      "hashPath": "microsoft.testplatform.testhost.17.12.0.nupkg.sha512"
+      "sha512": "sha512-9GGw08Dc3AXspjekdyTdZ/wYWFlxbgcF0s7BKxzVX+hzAwpifDOdxM+ceVaaJSQOwqt3jtuNlHn3XTpKUS9x9Q==",
+      "path": "microsoft.testplatform.testhost/17.13.0",
+      "hashPath": "microsoft.testplatform.testhost.17.13.0.nupkg.sha512"
     },
     "Moq/4.20.72": {
       "type": "package",
@@ -521,12 +521,12 @@
       "path": "xunit.extensibility.execution/2.9.3",
       "hashPath": "xunit.extensibility.execution.2.9.3.nupkg.sha512"
     },
-    "xunit.runner.visualstudio/2.8.2": {
+    "xunit.runner.visualstudio/3.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-vm1tbfXhFmjFMUmS4M0J0ASXz3/U5XvXBa6DOQUL3fEz4Vt6YPhv+ESCarx6M6D+9kJkJYZKCNvJMas1+nVfmQ==",
-      "path": "xunit.runner.visualstudio/2.8.2",
-      "hashPath": "xunit.runner.visualstudio.2.8.2.nupkg.sha512"
+      "sha512": "sha512-oXbusR6iPq0xlqoikjdLvzh+wQDkMv9If58myz9MEzldS4nIcp442Btgs2sWbYWV+caEluMe2pQCZ0hUZgPiow==",
+      "path": "xunit.runner.visualstudio/3.0.2",
+      "hashPath": "xunit.runner.visualstudio.3.0.2.nupkg.sha512"
     },
     "Mammoth/1.0.0": {
       "type": "project",

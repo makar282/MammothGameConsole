@@ -1,3 +1,4 @@
+using MammothHunting.Models;
 using System;
 using static System.Console;
 
@@ -15,7 +16,8 @@ namespace MammothHunting.Views
 			WriteLine("=== Ввод имени игрока ===");
 			Write("Введите ваше имя: ");
 			Console.SetCursorPosition(0, 2); // Перемещаем курсор на третью строку
-			Name = ReadLine();
+			Name = ReadLine()?.Trim() ?? "Unknown"; // Устанавливаем имя, избегаем null
+			User.Instance.Name = Name; // Передаем имя в User
 			Console.SetCursorPosition(0, 3);
 			WriteLine($"Ваше имя: {Name}");
 			WriteLine("Нажмите любую клавишу, чтобы вернуться в главное меню...");

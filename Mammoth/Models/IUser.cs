@@ -1,4 +1,4 @@
-﻿namespace MammothWPF.Models
+﻿namespace MammothHunting.Models
 {
 	/// <summary>
 	/// Интерфейс, представляющий пользователя в игре

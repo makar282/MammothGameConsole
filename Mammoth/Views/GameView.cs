@@ -1,11 +1,17 @@
 ﻿using MammothHunting.Controllers;
 using MammothHunting.Models;
-using System;
 
 namespace MammothHunting.Views
 {
-	public static class GameView
+	public class GameView
 	{
+		private readonly IMammothView _mammothView;
+
+		public GameView(IMammothView mammothView)
+		{
+			_mammothView = mammothView ?? throw new ArgumentNullException(nameof(mammothView));
+		}
+
 		public static void DrawBorder()
 		{
 			// Проверяем, чтобы границы не выходили за пределы консоли
@@ -28,11 +34,11 @@ namespace MammothHunting.Views
 		}
 
 		// Отрисовка всех игровых объектов
-		public static void DrawGameObjects(Hunter hunter, Mammoth mammoth, ThrowingTheSpearController spear)
+		public void DrawGameObjects(Hunter hunter, Mammoth mammoth, ThrowingTheSpearController spear)
 		{
-			HunterView.Draw(hunter);
-			MammothView.Draw(mammoth);
-			//spear.Draw(); // Добавляем отрисовку копья
+			HunterView.Draw(hunter);               // Оставляем статический вызов
+			_mammothView.Draw(mammoth);            // Используем интерфейс для Mammoth
+												   //spear.Draw(); // Добавляем отрисовку копья
 		}
 
 		// Очистка игровой области

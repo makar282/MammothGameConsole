@@ -6,8 +6,6 @@ E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\Mammoth.runtimeconfig.json
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\Mammoth.exe
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\testhost.exe
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\xunit.runner.visualstudio.testadapter.dll
-E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\xunit.runner.reporters.netcoreapp10.dll
-E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\xunit.runner.utility.netcoreapp10.dll
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\MammothHunting.Tests.deps.json
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\MammothHunting.Tests.runtimeconfig.json
 E:\Mammoth\MammothHunting.Tests\bin\Debug\net9.0\MammothHunting.Tests.dll
