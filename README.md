@@ -14,6 +14,12 @@
 - Избежание препятствий на пути.  
 - Достижение цели — нанести определённое количество попаданий в мамонта до его выхода из зоны охоты.  
 
+## Скриншоты
+<img width="893" height="593" alt="image" src="https://github.com/user-attachments/assets/14511755-1626-49da-b0e3-afacd22f2f7b" />
+<img width="881" height="508" alt="image" src="https://github.com/user-attachments/assets/ea2ed56d-2139-49be-851a-8a426ad5ef2e" />
+<img width="942" height="631" alt="image" src="https://github.com/user-attachments/assets/48d31596-82d5-4dc9-ab18-f3aa2f37c1e0" />
+<img width="633" height="639" alt="image" src="https://github.com/user-attachments/assets/f73e0423-1956-4d19-9348-1154e284f8df" />
+
 ## Технические особенности
 
 - Используется многопоточность для обеспечения плавного игрового процесса и синхронизации игровых элементов.  
